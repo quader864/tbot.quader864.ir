@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3D Bioluminescent Point-Cloud Orb (OffscreenCanvas + Web Worker)</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: radial-gradient(circle at center, #070d22 0%, #030612 100%);
+      color: #e2e8f0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    .container {
+      position: relative;
+      width: 360px;
+      height: 360px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: grab;
+    }
+    .container:active {
+      cursor: grabbing;
+    }
+
+    canvas {
+      position: relative;
+      z-index: 10;
+      display: block;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .hud {
+      position: absolute;
+      bottom: 28px;
+      text-align: center;
+      z-index: 20;
+    }
+    .title {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #38bdf8;
+      text-shadow: 0 0 16px rgba(56, 189, 248, 0.6);
+      margin-bottom: 4px;
+    }
+    .status {
+      font-size: 11px;
+      color: #94a3b8;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="orb-container">
+    <canvas id="orb-canvas"></canvas>
+  </div>
+
+  <div class="hud">
+    <div class="title">Bioluminescent Quantum Orb</div>
+    <div class="status" id="status-indicator">Initializing Web Worker...</div>
+  </div>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
